@@ -1,6 +1,7 @@
 import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { getAllVideogames } from '../redux/actions';
+import Videogame from './Videogame';
 
 
 
@@ -11,13 +12,16 @@ const Videogames = () => {
     useEffect(() => {
       dispatch(getAllVideogames()) 
     },[])
-    console.log(videogames)
  
       
       return (
-          <div>
-            Soy Videogames
-          </div>
+          <>
+            {
+              videogames.map((videogame) => {
+                return <Videogame key={videogame.id} id={videogame.id} name={videogame.name} image={videogame.image}/>
+              })
+            }
+          </>
       );
   };
   

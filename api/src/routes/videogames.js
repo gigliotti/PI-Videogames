@@ -37,15 +37,19 @@ router.get('/', (req, res, next) => {
         .then((resp) => {
             const [videogamesApi, videogamesDB] = resp
             let videogamesApiFiltered = videogamesApi.data.results.map((videogame) => {
-                return {
-                    id: videogame.id,
-                    name: videogame.name,
-                    description: videogame.description,
-                    released: videogame.released,
-                    rating: videogame.rating,
-                    platforms: videogame.platforms[0].platform.name,
-                    genre: videogame.genres
+                if(videogame) {
 
+                    return {
+                        id: videogame.id,
+                        name: videogame.name,
+                        description: videogame.description,
+                        released: videogame.released,
+                        image: videogame.background_image,
+                        rating: videogame.rating,
+                        platforms: videogame.platforms[0].platform.name,
+                        genre: videogame.genres
+    
+                    }
                 }
             })
 
@@ -108,6 +112,7 @@ router.get('/:id', async (req, res, next) => {
                 name: resp.name,
                 description: resp.description,
                 released: resp.released,
+                image: resp.background_image,
                 rating: resp.rating,
                 platforms: resp.platforms[0].platform.name,
                 genre: resp.genres

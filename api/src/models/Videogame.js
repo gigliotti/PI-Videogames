@@ -20,6 +20,10 @@ module.exports = (sequelize) => {
     released: {
       type: DataTypes.DATE
     },
+    image: {
+      type: DataTypes.STRING,
+      defaultValue: "https://img.freepik.com/premium-vector/icon-gamepad-play-arcade-video-game-gamer-custom-designcartoon-illustration_185390-205.jpg?w=2000"
+    },
     rating: {
       type: DataTypes.FLOAT
     },
