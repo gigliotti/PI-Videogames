@@ -6,12 +6,12 @@ import Videogames from './components/Videogames';
 import { Route, Switch } from 'react-router-dom';
 import VideogameDetail from './components/VideogameDetail';
 import CreateVideogame from './components/CreateVideogame';
+import LandingPage from './components/LandingPage';
 
 function App() {
   return (
     <div className="App">
       <Nav />
-      <SearchBar />
       <Switch>
         <Route path="/videogames/create">
           <CreateVideogame />
@@ -20,8 +20,12 @@ function App() {
           <VideogameDetail />
         </Route>
         <Route path="/videogames">
+          <SearchBar />
           <Order />
           <Videogames />
+        </Route>
+        <Route exact path="/">
+          <LandingPage />
         </Route>
       </Switch>
     </div>

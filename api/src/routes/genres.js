@@ -17,8 +17,38 @@ const router = Router();
   - GET <https://api.rawg.io/api/genres>
   */
 
-  router.get('/', (req, res, next) => {
-    let genresApi = axios.get(`https://api.rawg.io/api/genres?key=${YOUR_API_KEY}`)
+  router.get('/', async (req, res, next) => {
+    try {
+      
+      let genresApi = await axios.get(`https://api.rawg.io/api/genres?key=${YOUR_API_KEY}`)
+      .then((resp) => {
+        let genre = resp.data.results
+        //console.log(genre)
+        genre_name = genre.map(({id, name}) => {
+     //     return {id, name}
+   //     })
+        //console.log(genre_name)
+   //     genre_name.map(async gen =>  {
+          //console.log(gen.id)
+          //gen.id = (gen.id).toString()
+            //if(typeof(gen.id) === 'string' ) console.log('true')
+            Genre.findOrCreate({
+              where: {
+                id: id,
+                name: name,
+              }
+            })
+            //console.log(genreList)
+
+          
+        }) 
+      })
+      const genreList = await Genre.findAll();
+      res.json(genreList)
+    } catch (error) {
+      next(error)
+    }
+    
     
 })
 

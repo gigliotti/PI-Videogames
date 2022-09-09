@@ -1,10 +1,10 @@
-import {GET_ALL_VIDEOGAMES, SEARCH_VIDEOGAMES, ORDER_VIDEOGAMES, ASCENDENTE} from '../constants'
+import {GET_ALL_VIDEOGAMES, SEARCH_VIDEOGAMES, ORDER_VIDEOGAMES, ASCENDENTE, GET_ALL_GENRES} from '../constants'
 
 const initialState = {
     videogames: [],
 //    videogame: {},
     filteredVideogames: [],
-    genre: []
+    genres: []
 }
 
 export default function reducer(state = initialState, action) {
@@ -38,6 +38,11 @@ export default function reducer(state = initialState, action) {
             return {
                 ...state,
                 videogames: filteredVideogames
+            }
+        case GET_ALL_GENRES:
+            return {
+                ...state,
+                genres: action.payload.data
             }
         
 /*         case GET_VIDEOGAME:

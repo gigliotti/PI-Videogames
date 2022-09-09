@@ -80,15 +80,25 @@ router.get('/', (req, res, next) => {
 router.post('/', async (req, res, next) => {
     try {
         
-        const { name, description, released, rating, platforms } = req.body
-       // console.log(req.body)
+        //const { name, description, released, rating, platforms, genre } = req.body
+        const { videogame, genre } = req.body
+        console.log(req.body)
         const newVideogame = await Videogame.create({
-            name,
-            description,
-            released,
-            rating,
-            platforms
+            name: videogame.name,
+            description: videogame.description,
+            released: videogame.released,
+            rating: videogame.rating,
+            platforms: videogame.platforms
         })
+
+        //console.log(genre)
+        genre.map(async g => {
+            g = parseInt(g)
+            const genreDB = await Genre.findByPk(g)
+            newVideogame.addGenre(genreDB)
+        })
+        
+
         res.json(newVideogame)
         
     } catch (error) {
