@@ -1,0 +1,35 @@
+.landingContainer {
+    height: 100vh;
+    display: flex;
+    align-items: center;
+
+}
+
+.modalContainer {
+   background-color: white;
+   position: absolute;
+   font-size: 60px;
+   font-weight: bold;
+   text-decoration: none;
+   top: 50%;
+   left: 50%;
+   height: 100px;
+   width: 400px;
+   border-radius: 15px;
+   margin: -5% 0 0 -10%;
+   font-family: Verdana, sans-serif;
+}
+
+.modalContainer a{
+    text-decoration: none;
+    color: aqua;
+}
+
+.modalContainer a:visited {
+    text-decoration: none;
+}
+
+.modalContainer a:hover {
+    text-decoration: none;
+    color:teal;
+}

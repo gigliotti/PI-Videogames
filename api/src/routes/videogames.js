@@ -6,15 +6,15 @@ const axios = require('axios');
 const { Op } = require('sequelize');
 const router = Router();
 
-router.get('/', (req, res, next) => {
+router.get('/', async (req, res, next) => {
     try {
         let videogamesApi
         let videogamesDB
         let search = req.query.search
 
         if(search){
-            videogamesApi = axios.get(`https://api.rawg.io/api/games?key=${YOUR_API_KEY}&search=${search}`)
-            console.log(search)
+            videogamesApi = await axios.get(`https://api.rawg.io/api/games?key=${YOUR_API_KEY}&search=${search}&page_size=40`)
+            videogamesApi = videogamesApi.data.results
             videogamesDB = Videogame.findAll({
                 include: Genre,
                 where: {
@@ -24,7 +24,14 @@ router.get('/', (req, res, next) => {
                 }
             })
         } else {
-            videogamesApi = axios.get(`https://api.rawg.io/api/games?key=${YOUR_API_KEY}`)
+            callApi1 = await axios.get(`https://api.rawg.io/api/games?key=${YOUR_API_KEY}&page=1`)
+            callApi2 = await axios.get(`https://api.rawg.io/api/games?key=${YOUR_API_KEY}&page=2`)
+            callApi3 = await axios.get(`https://api.rawg.io/api/games?key=${YOUR_API_KEY}&page=3`)
+            callApi4 = await axios.get(`https://api.rawg.io/api/games?key=${YOUR_API_KEY}&page=4`)
+            callApi5 = await axios.get(`https://api.rawg.io/api/games?key=${YOUR_API_KEY}&page=5`)
+            
+            videogamesApi = [...callApi1.data.results, ...callApi2.data.results, ...callApi3.data.results, ...callApi4.data.results, ...callApi5.data.results]
+
             videogamesDB = Videogame.findAll({
                 include: Genre
             })
@@ -36,9 +43,9 @@ router.get('/', (req, res, next) => {
         ])
         .then((resp) => {
             const [videogamesApi, videogamesDB] = resp
-            let videogamesApiFiltered = videogamesApi.data.results.map((videogame) => {
+            let videogamesApiFiltered = videogamesApi.map((videogame) => {
                 if(videogame) {
-
+                    
                     return {
                         id: videogame.id,
                         name: videogame.name,
@@ -46,8 +53,8 @@ router.get('/', (req, res, next) => {
                         released: videogame.released,
                         image: videogame.background_image,
                         rating: videogame.rating,
-                        platforms: videogame.platforms[0].platform.name,
-                        genre: videogame.genres
+                        platforms: videogame.platforms ? videogame.platforms[0].platform.name : 'PC',
+                        genres: videogame.genres
     
                     }
                 }
@@ -82,10 +89,11 @@ router.post('/', async (req, res, next) => {
         
         //const { name, description, released, rating, platforms, genre } = req.body
         const { videogame, genre } = req.body
-        console.log(req.body)
+        
         const newVideogame = await Videogame.create({
             name: videogame.name,
             description: videogame.description,
+            image: videogame.image,
             released: videogame.released,
             rating: videogame.rating,
             platforms: videogame.platforms
@@ -112,7 +120,11 @@ router.get('/:id', async (req, res, next) => {
         const id = req.params.id
         let videogame
         if(id.length > 10) {
-            videogame = await Videogame.findByPk(id)
+            videogame = await Videogame.findOne({
+                include: Genre,
+                where: { id: id }
+            })
+            console.log(videogame)
     
         } else {
             let resp = await axios.get(`https://api.rawg.io/api/games/${id}?&key=${YOUR_API_KEY}`)
@@ -125,8 +137,7 @@ router.get('/:id', async (req, res, next) => {
                 image: resp.background_image,
                 rating: resp.rating,
                 platforms: resp.platforms[0].platform.name,
-                genre: resp.genres
-
+                genres: resp.genres
             }
 
 

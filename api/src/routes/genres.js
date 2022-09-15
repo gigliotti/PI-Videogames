@@ -25,22 +25,13 @@ const router = Router();
         let genre = resp.data.results
         //console.log(genre)
         genre_name = genre.map(({id, name}) => {
-     //     return {id, name}
-   //     })
-        //console.log(genre_name)
-   //     genre_name.map(async gen =>  {
-          //console.log(gen.id)
-          //gen.id = (gen.id).toString()
-            //if(typeof(gen.id) === 'string' ) console.log('true')
+
             Genre.findOrCreate({
               where: {
                 id: id,
                 name: name,
               }
-            })
-            //console.log(genreList)
-
-          
+            })  
         }) 
       })
       const genreList = await Genre.findAll();

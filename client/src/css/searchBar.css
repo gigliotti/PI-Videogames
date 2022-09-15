@@ -1,0 +1,29 @@
+.searchBar {
+    background-color: #00fffff6;
+    height: 100px;
+}
+
+.inputSearch {
+    margin-top: 20px;
+    border: 0;
+    width: 20em;
+    height: 3em;
+    margin-right: 50px;
+    color: black;
+    border-radius: 0.25em;
+    box-shadow: 0 0 1em 0 rgba(0, 204, 255, 0.069);
+    
+  }
+
+
+.btnSearch {
+    color: white;
+    background-color: #00ffff;
+    padding: 8px 16px;
+    margin-left: 5px;
+    font-size: 20px;
+    font-weight: bold;
+    border: 1px solid #ddd;
+    border-radius: 6px;
+}
+ 

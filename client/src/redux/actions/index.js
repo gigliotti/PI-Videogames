@@ -1,6 +1,6 @@
 import axios from 'axios'
 
-import { GET_ALL_VIDEOGAMES, SEARCH_VIDEOGAMES, ORDER_VIDEOGAMES, GET_ALL_GENRES } from '../constants'
+import { GET_ALL_VIDEOGAMES, SEARCH_VIDEOGAMES, ORDER_NAME_VIDEOGAMES, ORDER_RATING_VIDEOGAMES, GET_ALL_GENRES, FILTER_CREATED, FILTER_GENRES } from '../constants'
 
 
 
@@ -32,11 +32,17 @@ export const searchVideogames = (search) => dispatch => {
 
 export const order = (order) => {
     return {
-        type: ORDER_VIDEOGAMES,
+        type: ORDER_NAME_VIDEOGAMES,
         payload: order
     }
 }
 
+export const orderRating = (order) => {
+    return {
+        type: ORDER_RATING_VIDEOGAMES,
+        payload: order
+    }
+}
 
 export const getAllGenres = () => dispatch => {
     return axios.get('http://localhost:3001/api/genres/')
@@ -51,16 +57,18 @@ export const getAllGenres = () => dispatch => {
     })
 }
 
-/* export const getVideogame = (id) => dispatch => {
-    return axios.get(`http://localhost:3001/videogames/${id}`)
-        .then((videogame) => {
-            dispatch({
-                type: GET_VIDEOGAME,
-                payload: videogame
-            })
-        })
-        .catch((error) => {
-            console.log(error);
-        })
-} */
+export const filterCreated = (created) => {
+    return {        
+        type: FILTER_CREATED,
+        payload: created
+    }
+}
+
+export const filterByGenre = (genres) => {
+    return {        
+        type: FILTER_GENRES,
+        payload: genres
+    }
+} 
+
 

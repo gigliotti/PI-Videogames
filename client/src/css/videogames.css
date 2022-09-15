@@ -1,0 +1,45 @@
+.videogames-grid {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: flex-start;
+    align-content: flex-start;
+    width: 100%;
+    height: 100%;
+
+    flex-direction: row;
+}
+
+.card {
+    width: 400px;
+    height: 500px;
+    margin: 5px;
+    border-radius: 10px;
+    background-color: rgba(255, 255, 255, 0.969);
+    display: inline-block;
+    text-decoration:none;
+    
+}
+
+.card p {
+    text-decoration:none;
+    font-size: small;
+    margin-top: 5px;
+
+    text-align: center;
+}
+
+.card a{
+    text-decoration: none;
+    color: #00b1b1;
+    font-weight: 20px;
+}
+
+.card a:visited {
+    text-decoration: none;
+}
+
+.card img {
+    width: 100%;
+    height: 200px;
+}

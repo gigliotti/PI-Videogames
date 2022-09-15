@@ -11,21 +11,23 @@ import LandingPage from './components/LandingPage';
 function App() {
   return (
     <div className="App">
-      <Nav />
       <Switch>
+        <Route exact path="/">
+          <LandingPage />
+        </Route>
         <Route path="/videogames/create">
+          <Nav />
           <CreateVideogame />
         </Route>
         <Route path="/videogames/:id">
-          <VideogameDetail />
+        <Nav />
+        <VideogameDetail />
         </Route>
         <Route path="/videogames">
+          <Nav />
           <SearchBar />
           <Order />
           <Videogames />
-        </Route>
-        <Route exact path="/">
-          <LandingPage />
         </Route>
       </Switch>
     </div>

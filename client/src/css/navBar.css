@@ -1,0 +1,16 @@
+.navBar {
+    background-color: #00fffff6;
+    padding-top: 20px;
+    padding-bottom: 20px;
+}
+
+.navBar a {
+    color: white;
+    background-color: #00ffff;
+    padding: 8px 16px;
+    margin-left: 5px;
+    font-size: 20px;
+    font-weight: bold;
+    text-decoration:none;
+
+}

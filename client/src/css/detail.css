@@ -1,0 +1,17 @@
+.detailContainer {
+    margin: 20px 280px;
+    width: 70%;
+    height: 100vh;
+    background-color: rgba(255, 255, 255, 0.931);
+}
+
+.detailContainer img{
+    width: 800px;
+    border-radius: 20px;
+}
+
+.detailContainer h1{
+    color: violet;
+    font-weight: bold;
+    padding: 50px;
+}

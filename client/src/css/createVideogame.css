@@ -1,0 +1,87 @@
+.formCreate {
+    display: flex;
+    flex-wrap: wrap;
+    padding: 100px;
+    background-color:rgba(240, 248, 255, 0.971);
+}
+
+.submit{
+    color: white;
+    background-color: #00ffff;
+    padding: 8px 150px;
+    font-size: 20px;
+    font-weight: bold;
+    border: 1px solid #ddd;
+    border-radius: 6px;
+    margin: 20px 700px;
+    box-shadow: 0 0 1em 0 rgba(0, 204, 255, 0.069);
+}
+
+.error {
+  color: red;
+  margin-right: -100px;
+
+}
+
+
+.flex-outer {
+    margin: 0 600px;
+    align-self: stretch;
+}
+
+.flex-outer li,
+.flex-inner {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  padding-bottom: 10px;
+}
+
+.flex-outer > li > label,
+.flex-outer li p {
+  flex: 1 0 120px;
+  max-width: 220px;
+}
+ 
+.flex-outer > li > label + *,
+.flex-inner {
+  flex: 1 0 220px;
+}
+
+.flex-outer input {
+    margin-top: 20px;
+    border: 1px solid;
+    width: 20em;
+    height: 3em;
+    margin-right: 50px;
+    color: black;
+    border-radius: 0.5em;
+    box-shadow: 0 0 1em 0 rgba(0, 204, 255, 0.069);
+}
+
+.flex-outer select {
+    margin-top: 20px;
+    border: 1px solid;
+    width: 20em;
+    height: 3em;
+    margin-right: 50px;
+    color: black;
+    border-radius: 0.5em;
+    box-shadow: 0 0 1em 0 rgba(0, 204, 255, 0.069);
+}
+
+.generos {
+
+    background-color: rgba(240, 240, 240, 0.961);
+    display: grid;
+    padding: 20px;
+    grid-template-columns: repeat(3, 1fr);
+    text-align: end;
+    grid-column-gap: 10px;
+    grid-row-gap: 10px;
+    border-radius: 0.5em;
+    margin: 0 600px;
+}
+
+
+

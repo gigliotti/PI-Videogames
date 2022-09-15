@@ -1,0 +1,17 @@
+.orderNav {
+    background-color: #00fffff6;
+    height: 100px;
+}
+.orderNav select{
+
+    border: 0;
+    width: 20em;
+    height: 3em;
+    margin-right: 50px;
+
+    color: black;
+    border-radius: 0.25em;
+    box-shadow: 0 0 1em 0 rgba(0, 204, 255, 0.069);
+    
+  }
+ 

@@ -2,6 +2,7 @@ import { Component } from "react";
 import { connect } from "react-redux";
 import { getAllGenres } from "../redux/actions";
 import { Link } from "react-router-dom";
+import '../css/landingPage.css'
 
 export class LandingPage extends Component {
     
@@ -11,8 +12,12 @@ export class LandingPage extends Component {
     }
 
     render() {
-        return <div><Link to={"/videogames"}>
-            Ingresat</Link></div>
+        return <div className="landingContainer">
+            <div className="modalContainer">
+            <Link to={"/videogames"}>
+            ingresar</Link>
+                </div>
+                </div>
     }
 }
 
